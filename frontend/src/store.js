@@ -36,6 +36,22 @@ export default new Vuex.Store({
           console.error(error);
           commit("setErrorMessage", "会員登録に失敗しました");
         });
+    },
+    async signIn({ commit }, { email, password }) {
+      commit("clearErrorMessage");
+      this.$http
+        .post("api/signin", {
+          email,
+          password
+        })
+        .then(response => {
+          console.log(response);
+          localStorage.setItem("jwt", response.data.access_token);
+        })
+        .catch(error => {
+          console.error(error);
+          commit("setErrorMessage", "会員登録に失敗しました");
+        });
     }
   }
 });
