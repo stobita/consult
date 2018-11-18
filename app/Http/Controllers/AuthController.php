@@ -18,7 +18,7 @@ class AuthController extends Controller
        */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login','hello', 'signup']]);
+        $this->middleware('auth:api', ['except' => ['signin','hello', 'signup']]);
     }
 
     public function hello()
@@ -42,7 +42,7 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function login()
+    public function signin()
     {
         $credentials = request(['email', 'password']);
 
