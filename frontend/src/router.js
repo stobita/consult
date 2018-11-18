@@ -6,14 +6,15 @@ import SignIn from "./views/SignIn.vue";
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: "history",
   base: process.env.BASE_URL,
   routes: [
     {
       path: "/",
       name: "home",
-      component: Home
+      component: Home,
+      meta: { requireAuth: true }
     },
     {
       path: "/signup",
@@ -21,7 +22,8 @@ export default new Router({
     },
     {
       path: "/signin",
-      component: SignIn
+      component: SignIn,
+      meta: { isSignIn: true }
     },
     {
       path: "/about",
@@ -34,3 +36,39 @@ export default new Router({
     }
   ]
 });
+
+router.beforeEach((to, from, next) => {
+  // 認証付き画面制御
+  if (to.matched.some(record => record.meta.requireAuth)) {
+    if (localStorage.getItem("jwt")) {
+      next();
+    } else {
+      next({
+        path: "/signin",
+        query: { redirect: to.fullPath }
+      });
+    }
+  } else {
+    next();
+  }
+
+  // サインイン済みの場合にサインイン画面にアクセスさせない
+  if (to.matched.some(record => record.meta.isSignIn)) {
+    if (localStorage.getItem("jwt")) {
+      next({
+        path: "/"
+      });
+    } else {
+      next();
+    }
+  }
+
+  // メニュークローズ
+  if (router.app.$store && router.app.$store.state.isMenuActive) {
+    router.app.$store.dispatch("toggleMenu", {
+      isActive: false
+    });
+  }
+});
+
+export default router;
