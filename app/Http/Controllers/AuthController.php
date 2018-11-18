@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\StoreUserRequest;
 use App\User;
 
 class AuthController extends Controller
@@ -24,7 +25,7 @@ class AuthController extends Controller
         return response()->json(['message' => 'hello'], 200);
     }
 
-    public function signup(Request $request)
+    public function signup(StoreUserRequest $request)
     {
         return response()->json(User::create([
             'name' => $request->input('name'),
