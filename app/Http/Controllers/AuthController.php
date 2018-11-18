@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreUserRequest;
 use App\User;
+use App\Http\Resources\User as UserResource;
 
 class AuthController extends Controller
 {
@@ -25,13 +26,15 @@ class AuthController extends Controller
         return response()->json(['message' => 'hello'], 200);
     }
 
-    public function signup(StoreUserRequest $request)
+    public function signup(StoreUserRequest $request): UserResource
     {
-        return response()->json(User::create([
+        return new UserResource(
+          User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
-        ]));
+        ])
+      );
     }
 
     /**
