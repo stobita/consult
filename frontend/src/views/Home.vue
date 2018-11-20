@@ -10,6 +10,9 @@ export default {
   name: "home",
   components: {
     RecruitmentForm
+  },
+  created() {
+    this.$store.dispatch("fetchRecruitments");
   }
 };
 </script>

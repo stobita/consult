@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 use App\Http\Requests\StoreRecruitmentRequest;
 use App\Http\Resources\Recruitment as RecruitmentResource;
 use App\Recruitment;
@@ -14,9 +15,11 @@ class RecruitmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request): ResourceCollection
     {
-        //
+        return RecruitmentResource::collection(
+        Recruitment::latest()->paginate($request->input('limit', 20))
+      );
     }
 
     /**

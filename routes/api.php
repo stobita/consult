@@ -21,6 +21,7 @@ Route::group(["middleware" => "guest:api"], function () {
     Route::post("/hello", "AuthController@hello");
     Route::post("/signup", "AuthController@signup");
     Route::post("/signin", "AuthController@signin");
+    Route::get("recruitments", "RecruitmentController@index");
 });
 
 Route::group([ 'middleware' => 'auth:api', ], function ($router) {
