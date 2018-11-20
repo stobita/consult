@@ -56,6 +56,19 @@ export default new Vuex.Store({
     async clearMessages({ commit }) {
       commit("clearErrorMessage");
       commit("clearNotification");
+    },
+    async postRecruitment(_, { subject, body }) {
+      this.$http
+        .post("apo/recruitment", {
+          subject,
+          body
+        })
+        .then(response => {
+          console.log(response);
+        })
+        .then(error => {
+          console.error(error);
+        });
     }
   }
 });
