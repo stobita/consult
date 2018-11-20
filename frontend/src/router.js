@@ -69,6 +69,11 @@ router.beforeEach((to, from, next) => {
       isActive: false
     });
   }
+
+  // メッセージ系の削除
+  if (router.app.$store) {
+    router.app.$store.dispatch("clearMessages");
+  }
 });
 
 export default router;

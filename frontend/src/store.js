@@ -17,6 +17,9 @@ export default new Vuex.Store({
     },
     clearErrorMessage(state) {
       state.errorMessage = "";
+    },
+    clearNotification(state) {
+      state.notification = "";
     }
   },
   actions: {
@@ -49,6 +52,10 @@ export default new Vuex.Store({
         .catch(() => {
           commit("setErrorMessage", "会員登録に失敗しました");
         });
+    },
+    async clearMessages({ commit }) {
+      commit("clearErrorMessage");
+      commit("clearNotification");
     }
   }
 });
