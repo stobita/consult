@@ -32,8 +32,7 @@ export default new Vuex.Store({
         .then(() => {
           commit("setNotification", "会員登録が完了しました");
         })
-        .catch(error => {
-          console.error(error);
+        .catch(() => {
           commit("setErrorMessage", "会員登録に失敗しました");
         });
     },
@@ -45,11 +44,9 @@ export default new Vuex.Store({
           password
         })
         .then(response => {
-          console.log(response);
           localStorage.setItem("jwt", response.data.access_token);
         })
-        .catch(error => {
-          console.error(error);
+        .catch(() => {
           commit("setErrorMessage", "会員登録に失敗しました");
         });
     }
