@@ -8,4 +8,9 @@
   </div>
 </template>
 
-<style lang="scss"></style>
+<script>
+import "normalize.css";
+export default {};
+</script>
+
+<style lang="sass"></style>

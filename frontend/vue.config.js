@@ -13,5 +13,13 @@ module.exports = {
   indexPath:
     process.env.NODE_ENV === "production"
       ? "../resources/views/index.blade.php"
-      : "index.html"
+      : "index.html",
+
+  css: {
+    loaderOptions: {
+      sass: {
+        data: `@import "@/styles/main.sass"`
+      }
+    }
+  }
 };
