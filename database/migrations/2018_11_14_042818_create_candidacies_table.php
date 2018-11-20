@@ -18,7 +18,7 @@ class CreateCandidaciesTable extends Migration
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('subject');
-            $table->string('body');
+            $table->text('body');
             $table->timestamps();
         });
     }
