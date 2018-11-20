@@ -7,7 +7,7 @@
 <style scoped lang="sass">
 .container
   background: $main-bg
-  color: white
+  color: $main-text
   padding: 8px
   .content
     width: $main-width

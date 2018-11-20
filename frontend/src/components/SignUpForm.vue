@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="auth-form">
     <p v-if="errorMessage !== ''">{{ errorMessage }}</p>
     <div class="form-item">
       <input
@@ -68,3 +68,4 @@ export default {
   }
 };
 </script>
+<style scoped lang="sass"></style>

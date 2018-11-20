@@ -1,15 +1,20 @@
 <template>
-  <div class="sign-in-form">
+  <div class="auth-form">
     <p v-if="errorMessage != ''">{{ errorMessage }}</p>
     <div class="form-item">
-      <input v-model="formEmail" type="text" name="email" placeholder="Email" />
+      <input
+        v-model="formEmail"
+        type="text"
+        name="email"
+        placeholder="メールアドレス"
+      />
     </div>
     <div class="form-item">
       <input
         v-model="formPassword"
         type="password"
         name="password"
-        placeholder="Password"
+        placeholder="パスワード"
       />
     </div>
     <div class="form-item">
