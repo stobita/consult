@@ -21,6 +21,9 @@
       <button type="button" @click="signIn" name="signin" class="btn first">
         ログイン
       </button>
+      <router-link to="/signup" tag="button" class="signup"
+        >新規会員登録</router-link
+      >
     </div>
   </div>
 </template>

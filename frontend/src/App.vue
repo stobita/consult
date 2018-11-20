@@ -1,10 +1,6 @@
 <template>
   <div id="app">
     <MainHeader />
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
     <div class="content"><router-view /></div>
   </div>
 </template>
@@ -32,5 +28,5 @@ body
   min-height: 100%
 .content
   width: $main-width
-  margin: 0 auto
+  margin: 32px auto
 </style>
