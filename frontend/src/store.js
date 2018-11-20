@@ -41,7 +41,7 @@ export default new Vuex.Store({
     },
     async signIn({ commit }, { email, password }) {
       commit("clearErrorMessage");
-      this.$http
+      await this.$http
         .post("api/signin", {
           email,
           password

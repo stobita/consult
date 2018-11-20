@@ -43,10 +43,14 @@ export default {
   },
   methods: {
     signIn() {
-      this.$store.dispatch("signIn", {
-        email: this.formEmail,
-        password: this.formPassword
-      });
+      this.$store
+        .dispatch("signIn", {
+          email: this.formEmail,
+          password: this.formPassword
+        })
+        .then(() => {
+          this.$router.push("/");
+        });
     }
   }
 };
