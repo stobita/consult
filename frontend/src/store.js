@@ -57,16 +57,16 @@ export default new Vuex.Store({
       commit("clearErrorMessage");
       commit("clearNotification");
     },
-    async postRecruitment(_, { subject, body }) {
+    postRecruitment(_, { subject, body }) {
       this.$http
-        .post("apo/recruitment", {
+        .post("api/recruitment", {
           subject,
           body
         })
         .then(response => {
           console.log(response);
         })
-        .then(error => {
+        .catch(error => {
           console.error(error);
         });
     }
