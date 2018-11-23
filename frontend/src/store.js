@@ -6,7 +6,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     errorMessage: "",
-    notification: ""
+    notification: "",
+    recruitments: []
   },
   mutations: {
     setNotification(state, payload) {
@@ -20,6 +21,9 @@ export default new Vuex.Store({
     },
     clearNotification(state) {
       state.notification = "";
+    },
+    setRecruitments(state, payload) {
+      state.recruitments = payload;
     }
   },
   actions: {
@@ -72,7 +76,7 @@ export default new Vuex.Store({
     },
     async fetchRecruitments({ commit }) {
       this.$http.get("api/recruitments").then(response => {
-        console.log(response);
+        commit("setRecruitments", response.data.data);
       });
     }
   }

@@ -17,7 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(["middleware" => "guest:api"], function () {
+Route::group(["middleware" => "guest:api"], function ($router) {
     Route::post("/hello", "AuthController@hello");
     Route::post("/signup", "AuthController@signup");
     Route::post("/signin", "AuthController@signin");
